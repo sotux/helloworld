@@ -14,8 +14,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_CONFIG_DEPENDS:= \
 	CONFIG_XRAY_CORE_PROVIDE_V2RAY_CORE \
-	CONFIG_XRAY_CORE_COMPRESS_GOPROXY \
-	CONFIG_XRAY_CORE_COMPRESS_UPX \
+	CONFIG_XRAY_CORE_COMPRESS_GOPROXY
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/Xray-core-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=golang/host
@@ -78,9 +77,6 @@ config XRAY_CORE_COMPRESS_GOPROXY
 	bool "Compiling with GOPROXY proxy"
 	default n
 
-config XRAY_CORE_COMPRESS_UPX
-	bool "Compress executable files with UPX"
-	default y
 endmenu
 endef
 
@@ -119,9 +115,6 @@ endef
 
 define Build/Compile
 	$(call GoPackage/Build/Compile)
-ifneq ($(CONFIG_XRAY_CORE_COMPRESS_UPX),)
-	$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/main
-endif
 endef
 
 define Package/xray-core/install
