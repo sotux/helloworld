@@ -43,12 +43,14 @@ define Package/xray-core-alt
   $(call Package/xray-alt/template)
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
   PROVIDES:=v2ray-core
+  CONFLICTS:=xray-core
 endef
 
 define Package/xray-geodata-alt
   $(call Package/xray-alt/template)
   TITLE+= (geodata files)
   DEPENDS:=xray-core-alt
+  CONFLICTS:=xray-geodata
 endef
 
 define Package/xray-alt/description
