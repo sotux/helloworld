@@ -31,43 +31,44 @@ GO_PKG_LDFLAGS_X:= \
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
-define Package/xray/template
+define Package/xray-alt/template
   TITLE:=A platform for building proxies to bypass network restrictions
   SECTION:=net
   CATEGORY:=Network
+  SUBMENU:=Project V
   URL:=https://xtls.github.io
 endef
 
-define Package/xray-core
-  $(call Package/xray/template)
+define Package/xray-core-alt
+  $(call Package/xray-alt/template)
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
   PROVIDES:=v2ray-core
 endef
 
-define Package/xray-geodata
-  $(call Package/xray/template)
+define Package/xray-geodata-alt
+  $(call Package/xray-alt/template)
   TITLE+= (geodata files)
-  DEPENDS:=xray-core
+  DEPENDS:=xray-core-alt
 endef
 
-define Package/xray/description
+define Package/xray-alt/description
   Xray, Penetrates Everything. Also the best v2ray-core, with XTLS support. Fully compatible configuration.
   It secures your network connections and thus protects your privacy.
 endef
 
-define Package/xray-core/description
-  $(call Package/xray/description)
+define Package/xray-core-alt/description
+  $(call Package/xray-alt/description)
 endef
 
-define Package/xray-geodata/description
-  $(call Package/xray/description)
+define Package/xray-geodata-alt/description
+  $(call Package/xray-alt/description)
 
   This includes GEO datas used for xray-core.
 endef
 
-define Package/xray-core/config
+define Package/xray-core-alt/config
 menu "Xray-core Configuration"
-	depends on PACKAGE_xray-core
+	depends on PACKAGE_xray-core-alt
 
 config XRAY_CORE_PROVIDE_V2RAY_CORE
 	bool "Provide V2Ray binary using XRay"
@@ -107,7 +108,7 @@ endif
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-ifneq ($(CONFIG_PACKAGE_xray-geodata),)
+ifneq ($(CONFIG_PACKAGE_xray-geodata-alt),)
 	$(call Download,geoip)
 	$(call Download,geosite)
 endif
@@ -117,7 +118,7 @@ define Build/Compile
 	$(call GoPackage/Build/Compile)
 endef
 
-define Package/xray-core/install
+define Package/xray-core-alt/install
 	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 
 	$(INSTALL_DIR) $(1)/usr/bin/
@@ -127,11 +128,11 @@ ifneq ($(CONFIG_XRAY_CORE_PROVIDE_V2RAY_CORE),)
 endif
 endef
 
-define Package/xray-geodata/install
+define Package/xray-geodata-alt/install
 	$(INSTALL_DIR) $(1)/usr/share/xray/
 	$(INSTALL_DATA) $(DL_DIR)/$(GEOIP_FILE) $(1)/usr/share/xray/geoip.dat
 	$(INSTALL_DATA) $(DL_DIR)/$(GEOSITE_FILE) $(1)/usr/share/xray/geosite.dat
 endef
 
-$(eval $(call BuildPackage,xray-core))
-$(eval $(call BuildPackage,xray-geodata))
+$(eval $(call BuildPackage,xray-core-alt))
+$(eval $(call BuildPackage,xray-geodata-alt))

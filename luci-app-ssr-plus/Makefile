@@ -51,12 +51,12 @@ LUCI_DEPENDS:=+shadowsocksr-libev-ssr-check +ipset +ip-full +iptables-mod-tproxy
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks:shadowsocks-libev-alt \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks:simple-obfs \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_plugin:v2ray-plugin \
-	+PACKAGE_$(PKG_NAME)_INCLUDE_Xray:xray-core \
+	+PACKAGE_$(PKG_NAME)_INCLUDE_Xray:xray-core-alt \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Trojan:trojan \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Trojan:ipt2socks \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_NaiveProxy:naiveproxy \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Redsocks2:redsocks2 \
-	+PACKAGE_$(PKG_NAME)_INCLUDE_Kcptun:kcptun-client \
+	+PACKAGE_$(PKG_NAME)_INCLUDE_Kcptun:kcptun-alt-client \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_ShadowsocksR_Server:shadowsocksr-libev-server
 
 include $(TOPDIR)/feeds/luci/luci.mk
