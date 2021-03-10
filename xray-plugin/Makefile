@@ -52,6 +52,7 @@ endif
 define Package/xray-plugin
 	SECTION:=net
 	CATEGORY:=Network
+	SUBMENU:=Project V
 	TITLE:=SIP003 plugin for Shadowsocks, based on Xray
 	URL:=https://github.com/teddysun/xray-plugin
 	DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
