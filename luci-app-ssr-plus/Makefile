@@ -14,8 +14,8 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks
 	bool "Include Shadowsocks"
 	default y
 
-config PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_plugin
-	bool "Include Shadowsocks V2ray Plugin"
+config PACKAGE_$(PKG_NAME)_INCLUDE_Xray_plugin
+	bool "Include Xray Plugin"
 	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Xray
@@ -50,7 +50,7 @@ LUCI_DEPENDS:=+shadowsocksr-libev-ssr-check +ipset +ip-full +iptables-mod-tproxy
 	+microsocks +dns2socks +tcping +resolveip \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks:shadowsocks-libev-alt \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks:simple-obfs \
-	+PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_plugin:v2ray-plugin \
+	+PACKAGE_$(PKG_NAME)_INCLUDE_Xray_plugin:xray-plugin \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Xray:xray-core-alt \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Trojan:trojan \
 	+PACKAGE_$(PKG_NAME)_INCLUDE_Trojan:ipt2socks \
